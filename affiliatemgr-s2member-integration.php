@@ -4,18 +4,16 @@
   Plugin Name: Affiliates Manager S2Member Integration
   Plugin URI: https://wpaffiliatemanager.com
   Description: Process an affiliate commission via Affiliates Manager after a S2Member payment.
-  Version: 1.0
+  Version: 1.0.2
   Author: wp.insider, affmngr
   Author URI: https://wpaffiliatemanager.com
  */
 
-if (defined("WS_PLUGIN__S2MEMBER_VERSION")) {
-    add_action("ws_plugin__s2member_before_sc_paypal_button_after_shortcode_atts", "wpam_s2member_integration");
-    add_action("ws_plugin__s2member_pro_before_sc_paypal_form_after_shortcode_atts", "wpam_s2member_integration");
-    add_action("ws_plugin__s2member_pro_before_sc_authnet_form_after_shortcode_atts", "wpam_s2member_integration");
-    add_action("plugins_loaded", "wpam_s2member_notification_url");
-    add_action("init", "wpam_s2member_process_affiliate_commission");
-}
+add_action("ws_plugin__s2member_before_sc_paypal_button_after_shortcode_atts", "wpam_s2member_integration");
+add_action("ws_plugin__s2member_pro_before_sc_paypal_form_after_shortcode_atts", "wpam_s2member_integration");
+add_action("ws_plugin__s2member_pro_before_sc_authnet_form_after_shortcode_atts", "wpam_s2member_integration");
+add_action("plugins_loaded", "wpam_s2member_notification_url");
+add_action("init", "wpam_s2member_process_affiliate_commission");
 
 function wpam_s2member_integration($vars = array()) {
     if (isset($_COOKIE[WPAM_PluginConfig::$RefKey])) {

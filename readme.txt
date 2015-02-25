@@ -4,7 +4,7 @@ Donate link: https://wpaffiliatemanager.com/
 Tags: s2 member, membership, affiliate, affiliates, users, affiliates manager, integration
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 1.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Process an affiliate commission via Affiliates Manager after a S2Member payment
@@ -32,6 +32,9 @@ Check the following page for screenshots
 https://wpaffiliatemanager.com/
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed a minor bug where the addon was not being to able to award commissions for S2Member signups.
 
 = 1.0 =
 * First commit to wordpress.org
