@@ -4,7 +4,7 @@
   Plugin Name: Affiliates Manager S2Member Integration
   Plugin URI: https://wpaffiliatemanager.com
   Description: Process an affiliate commission via Affiliates Manager after a S2Member payment.
-  Version: 1.0.2
+  Version: 1.0.3
   Author: wp.insider, affmngr
   Author URI: https://wpaffiliatemanager.com
  */
@@ -16,7 +16,12 @@ add_action("plugins_loaded", "wpam_s2member_notification_url");
 add_action("init", "wpam_s2member_process_affiliate_commission");
 
 function wpam_s2member_integration($vars = array()) {
-    if (isset($_COOKIE[WPAM_PluginConfig::$RefKey])) {
+    if(isset($_COOKIE['wpam_id']))  //checking new tracking cookie first
+    {
+        $strRefKey = $_COOKIE['wpam_id'];
+        $vars["__refs"]["attr"]["custom"] .= "|" . $strRefKey;
+    }
+    else if (isset($_COOKIE[WPAM_PluginConfig::$RefKey])) {
         $strRefKey = $_COOKIE[WPAM_PluginConfig::$RefKey];
         $vars["__refs"]["attr"]["custom"] .= "|" . $strRefKey;
     }
